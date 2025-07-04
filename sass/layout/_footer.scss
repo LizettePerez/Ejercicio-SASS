@@ -1,0 +1,40 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.footer {
+  &__container {
+    @include mixins.flex(center, center);
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+
+    img {
+      width: 40px;
+    }
+  }
+
+  &__socialmedia {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__socialmedia-icon {
+    background: variables.$color-accent;
+    width: 40px;
+    height: 40px;
+    border-radius: variables.$radius-circle;
+    @include mixins.flex(center, center);
+  }
+
+  &__socialmedia-icon a {
+    color: variables.$color-white;
+  }
+
+
+  &__text {
+    @include mixins.font(variables.$font-size-xs,
+      variables.$line-height-paragraph,
+      variables.$letter-spacing-base );
+  }
+}

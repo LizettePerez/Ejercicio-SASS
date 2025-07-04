@@ -1,0 +1,91 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: variables.$color-bg;
+
+  &__container {
+    @include mixins.flex(space-between, center);
+    padding: 10px 50px;
+  }
+
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: variables.$font-size-lg;
+    cursor: pointer;
+  }
+
+  &__menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+
+  &__item {
+    text-transform: uppercase;
+    @include mixins.font(variables.$font-size-base,
+      variables.$line-height-subtitle,
+      variables.$letter-spacing-wide );
+
+    & a {
+      text-decoration: none;
+      color: variables.$color-text;
+    }
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+
+  &__link--active {
+    background: variables.$color-accent;
+    color: variables.$color-white !important;
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid variables.$color-accent;
+
+    &:hover {
+      background-color: variables.$color-bg;
+      color: variables.$color-accent !important;
+      border: 2px solid variables.$color-accent;
+    }
+  }
+}
+
+@include mixins.respond-to(tablet) {
+  .nav {
+    &__toggle {
+      display: block;
+    }
+
+    &__menu {
+      display: none;
+      flex-direction: column;
+      background-color: variables.$color-bg;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      width: 200px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &__menu--open {
+      display: flex;
+    }
+
+    &__item {
+      margin-bottom: 10px;
+    }
+
+    &__container {
+      position: relative;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.article {
+  &__content {
+    @include mixins.flex(space-between, center);
+    padding: variables.$btn-padding;
+  }
+
+  &__image {
+    flex: 0 0 50%;
+  }
+
+  &__content-text {
+    flex: 0 0 50%;
+  }
+
+  &__title {
+    @include mixins.font(variables.$font-size-xl,
+      variables.$line-height-paragraph,
+      variables.$letter-spacing-base,
+    );
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    @include mixins.font(variables.$font-size-base,
+      variables.$line-height-paragraph,
+      variables.$letter-spacing-base,
+    );
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__form input {
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: variables.$radius-none;
+    padding: 16px;
+  }
+
+  &__image {
+    flex: 0 0 60%;
+
+    img {
+      width: 80%;
+      height: auto;
+    }
+  }
+}
+
+@include mixins.respond-to(tablet) {
+  .article {
+    &__content {
+      flex-direction: column-reverse;
+      text-align: center;
+      padding: 20px;
+    }
+
+
+    &__title {
+      font-size: variables.$font-size-lg;
+      line-height: variables.$line-height-subtitle;
+    }
+
+    &__text {
+      font-size: variables.$font-size-sm;
+      letter-spacing: variables.$letter-spacing-base;
+    }
+
+  }
+}

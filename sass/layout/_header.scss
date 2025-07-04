@@ -1,0 +1,72 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.header {
+  &__content {
+    @include mixins.flex(space-between, center);
+    padding: variables.$btn-padding;
+  }
+
+  &__subtitle {
+    @include mixins.font(variables.$font-size-md,
+      variables.$line-height-subtitle,
+      variables.$letter-spacing-title );
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    @include mixins.font(variables.$font-size-xxl,
+      variables.$line-height-title,
+      variables.$letter-spacing-base );
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  &__text-paragraph {
+    @include mixins.font(variables.$font-size-base,
+      variables.$line-height-paragraph,
+      variables.$letter-spacing-base );
+    margin-top: 0px;
+  }
+
+  &__text {
+    flex: 0 0 40%;
+  }
+
+  &__image {
+    flex: 0 0 60%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@include mixins.respond-to(tablet) {
+  .header {
+    &__content {
+      flex-direction: column-reverse;
+      text-align: center;
+      padding: 20px;
+    }
+
+    &__title {
+      font-size: variables.$font-size-xl;
+      line-height: variables.$line-height-paragraph;
+    }
+
+    &__subtitle {
+      font-size: variables.$font-size-sm;
+      letter-spacing: variables.$letter-spacing-wide;
+    }
+
+    &__text-paragraph {
+      font-size: variables.$font-size-sm;
+      line-height: variables.$line-height-paragraph;
+    }
+  }
+}
